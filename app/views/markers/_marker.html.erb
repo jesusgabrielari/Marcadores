@@ -1,0 +1,8 @@
+<tr id="marker-<%=@marker.id%>">
+    <td><%= @marker.id %></td>
+    <td><%= @marker.name %></td>
+    <td><%= @categories.find(@marker.category_id).name %></td>
+    <td><%= @archetypes.find(@marker.archetype_id).name %></td>
+    <td><%= link_to 'Editar', edit_marker_path(@marker), remote: true, id: 'editbtn' %></td>
+    <td><%= link_to 'Eliminar', marker_path(@marker), remote: true, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar el Marcador?' } %></td>
+</tr>

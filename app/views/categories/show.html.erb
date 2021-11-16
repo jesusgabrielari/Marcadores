@@ -1,0 +1,26 @@
+<h3 class="category-title text-center">Listado de Categorias</h3>
+
+<table class="table table-striped">
+    <thead id="tabla">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Categoria</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody id="categories">
+        <% @categories.each do |c| %>
+            <tr>
+                <td><%= c.id %></td>
+                <td><%= c.name %></td>
+                <td><%= c.status %></td>
+                <td><%= link_to 'Editar', edit_category_path(c) %></td>
+                <td><%= link_to 'Eliminar', category_path(c), method: :delete, data: { confirm: '¿Esta seguro que desea eliminar la Categoria?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<button class="btn btn-danger btn-md active"><%= link_to 'Volver al Inicio', root_path, class:'text-white'%></button>

@@ -1,0 +1,24 @@
+<%= form_with(model: @archetype, remote: true) do |f| %>
+    <% if @archetype.errors.any? %>
+        <div id = 'error_explanation'>
+            <h2>Este Tipo no se pudo crear por las siguientes razones</h2>
+            <ul>
+                <% @archetype.errors.full_messages.each do |msg|%>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <h3>Ingrese su Tipo</h3>
+    
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, placeholder: 'Escriba el nombre de su Tipo', class: "form-control" %>
+    </div>
+
+    <div class = 'actions'>
+        <%= f.submit "Guardar Tipo", class:'btn btn-success border-dark mb-2'%>
+    </div>
+    <button class="btn btn-danger btn-md active"><%= link_to 'Volver al Inicio', root_path, class:'text-white'%></button>
+<% end %>

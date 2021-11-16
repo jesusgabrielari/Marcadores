@@ -1,0 +1,25 @@
+<div class="container">
+  <%= render 'archetypes/form' %>
+</div>
+
+<h3 class="category-title text-center">Listado de Tipos</h3>
+
+<table class="table table-striped">
+    <thead id="tabla">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody id="archetypes">
+        <% @archetypes.each do |a| %>
+            <tr>
+                <td><%= a.id %></td>
+                <td><%= a.name %></td>
+                <td><%= link_to 'Editar', edit_archetype_path(a) %></td>
+                <td><%= link_to 'Eliminar', archetype_path(a), method: :delete, data: { confirm: '¿Esta seguro que desea eliminar el Tipo?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

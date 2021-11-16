@@ -1,0 +1,33 @@
+<div id="mybutton">
+    <%= link_to 'Nuevo Marcador', new_marker_path, class: 'btn btn-primary', remote: true %>
+</div>
+
+<div id="form">
+</div>
+
+<h3 class="category-title text-center">Listado de Marcadores</h3>
+
+<table class="table table-striped">
+    <thead id="tabla">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Tipo</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody id="markers">
+        <% @markers.each do |m| %>
+            <tr id="marker-<%=m.id%>">
+                <td><%= m.id %></td>
+                <td><%= m.name %></td>
+                <td><%= @categories.find(m.category_id).name %></td>
+                <td><%= @archetypes.find(m.archetype_id).name %></td>
+                <td><%= link_to 'Editar', edit_marker_path(m), remote: true, id: 'editbtn' %></td>
+                <td><%= link_to 'Eliminar', marker_path(m), remote: true, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar el Marcador?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<button class="btn btn-danger btn-md active"><%= link_to 'Volver al Inicio', root_path, class:'text-white'%></button>

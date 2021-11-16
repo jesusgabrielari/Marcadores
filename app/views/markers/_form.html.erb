@@ -1,0 +1,36 @@
+<%= form_with(model: @marker, remote: true) do |f| %>
+    <% if @marker.errors.any? %>
+        <div id = 'error_explanation'>
+            <h2>Este Marcador no se pudo crear por las siguientes razones</h2>
+            <ul>
+                <% @marker.errors.full_messages.each do |msg|%>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <h3>Ingrese su Marcador</h3>
+    
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, placeholder: 'Escriba el nombre de su Marcador', class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :categoria %>
+        <br>
+        <%= f.collection_select :category_id, @categories, :id, :name%>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :tipo %>
+        <br>
+        <%= f.collection_select :archetype_id, @archetypes, :id, :name%>
+    </div>
+
+    <div class = 'actions' id="submit">
+        <%= f.submit "Guardar Marcador", class:'btn btn-success border-dark mb-2', data: {confirm: 'Estas seguro?'} %>
+    </div>
+
+<% end %>

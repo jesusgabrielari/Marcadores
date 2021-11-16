@@ -1,0 +1,11 @@
+<h1 class="category-title text-center">Sitio Público Bookmark</h1>
+
+<div class="container">
+    <button class="btn btn-primary btn-lg btn-block active"><%= link_to 'Revisar las Categorias', categories_path, class:'text-white'%></button>
+    <br>
+    <button class="btn btn-warning btn-lg btn-block active"><%= link_to 'Revisar los Tipos', archetypes_path, class:'text-white' %></button>
+    <br>
+    <button class="btn btn-success btn-lg btn-block active"><%= link_to 'Revisar los Marcadores', markers_path, class:'text-white' %></button>
+    <h2 class="category-title text-center py-2">Gráfico Tipo Marcadores</h2>
+    <%= pie_chart @marker_graph %>
+</div>
